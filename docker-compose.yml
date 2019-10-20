@@ -32,8 +32,6 @@ services:
   nginx:
     build: ./nginx
     container_name: nginx
-    volumes:
-      - ./nginx/html:/usr/share/nginx/html/
     ports:
       - 80:80
     depends_on:
