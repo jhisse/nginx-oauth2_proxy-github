@@ -5,12 +5,14 @@ services:
     container_name: redis
 
   oauth2_proxy:
-    image: quay.io/pusher/oauth2_proxy:v4.0.0-amd64
+    build: ./oauth2_proxy
     container_name: oauth2_proxy
     environment:
       - OAUTH2_PROXY_HTTP_ADDRESS=http://0.0.0.0:4180
-      - OAUTH2_PROXY_EMAIL_DOMAINS=*
       - OAUTH2_PROXY_UPSTREAM=http://localhost
+      # Restrictions (Not use in same time)
+      - OAUTH2_PROXY_AUTHENTICATED_EMAILS_FILE=/home/emails.txt
+      # - OAUTH2_PROXY_EMAIL_DOMAINS=*  
       # Same url in Github Callback URL
       - OAUTH2_PROXY_REDIRECT_URL=http://localhost/oauth2/callback
       - OAUTH2_PROXY_SESSION_STORE_TYPE=redis

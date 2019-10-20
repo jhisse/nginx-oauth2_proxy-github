@@ -1,0 +1,2 @@
+email_01@permitido.com
+email_02@permitido.com
